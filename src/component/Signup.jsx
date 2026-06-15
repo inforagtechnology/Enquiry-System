@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("/auth/signup", form);
+      const res = await API.post("https://backend-2-xfhu.onrender.com/auth/signup", form);
       setMessage(res.data.msg);
       setError("");
       setForm({ name: "", email: "", password: "" });

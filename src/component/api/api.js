@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "https://backend-2-xfhu.onrender.com";
+// const BASE_URL = "http://localhost:5000"
 
 const getAuthHeaders = () => {
   const token = localStorage.getItem("token");

@@ -34,7 +34,8 @@ import axios from "axios";
 
 // Create Axios instance for dashboard API
 const API = axios.create({
-  baseURL: "http://localhost:5000", // backend base URL
+  baseURL: "https://backend-2-xfhu.onrender.com", // backend base URL
+ //baseURL:"http://localhost:5000",
   headers: { "Content-Type": "application/json" },
 });
 

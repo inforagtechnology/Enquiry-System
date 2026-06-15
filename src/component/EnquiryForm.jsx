@@ -38,7 +38,7 @@ const EnquiryForm = () => {
     setMessage("");
     setError("");
     try {
-      const res = await axios.post("http://localhost:5000/enquiry/Create_enquiry", form);
+      const res = await axios.post("https://backend-2-xfhu.onrender.com/enquiry/Create_enquiry", form);
       alert(res.data.message);
       setForm({
         name: "",

@@ -18,7 +18,7 @@ const ResetPassword = () => {
     }
     try {
       const res = await axios.post(
-        `http://localhost:5000/auth/reset-password/${token}`,
+        `https://backend-2-xfhu.onrender.com/auth/reset-password/${token}`,
         { password }
       );
       setMsg(res.data.msg);

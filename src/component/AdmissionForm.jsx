@@ -601,7 +601,7 @@ export const AdmissionForm = () => {
       };
 
       const res = await axios.post(
-        "http://localhost:5000/Admission/admission_create",
+        "https://backend-2-xfhu.onrender.com/Admission/admission_create",
         payload
       );
       alert(res.data.message || "Admission created successfully");

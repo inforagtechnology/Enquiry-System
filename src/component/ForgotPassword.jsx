@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/auth/forgot-password", { email });
+      const res = await axios.post("https://backend-2-xfhu.onrender.com/auth/forgot-password", { email });
       setMsg(res.data.msg);
       setEmail(""); // clear field
     } catch (err) {

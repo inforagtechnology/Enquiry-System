@@ -106,8 +106,8 @@ const AuthForm = () => {
     e.preventDefault();
     try {
       const url = isSignup
-        ? "http://localhost:5000/auth/signup"
-        : "http://localhost:5000/auth/login"; 
+        ? "https://backend-2-xfhu.onrender.com/auth/signup"
+        : "https://backend-2-xfhu.onrender.com/auth/login"; 
 
       const payload = isSignup
         ? { name: form.name, email: form.email, password: form.password }

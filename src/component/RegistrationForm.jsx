@@ -247,7 +247,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/codeofschool/register",
+        "https://backend-2-xfhu.onrender.com/codeofschool/register",
         form
       );
       toast.success(response.data.message);

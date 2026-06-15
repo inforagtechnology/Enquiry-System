@@ -271,7 +271,7 @@ const RegistrationEdit = () => {
   try {
     const token = localStorage.getItem("token"); // 🔑 get token
     await axios.put(
-      `http://localhost:5000/codeofschool/update_user/${id}`,
+      `https://backend-2-xfhu.onrender.com/codeofschool/update_user/${id}`,
       form,
       {
         headers: {
