@@ -84,8 +84,7 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../component/API";
-
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,7 +93,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("https://backend-2-xfhu.onrender.com/auth/login", { email, password });
+      const res = await API.post(`${BASE_URL}/auth/login`, { email, password });
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
 

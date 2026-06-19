@@ -542,6 +542,8 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 
+const BASE_URL = import.meta.env.VITE_API_BASE_URl|| "http://localhost:5000"
+
 export const AdmissionForm = () => {
   const location = useLocation();
   const prefillData = location.state?.formData; // ✅ data from Home
@@ -601,7 +603,7 @@ export const AdmissionForm = () => {
       };
 
       const res = await axios.post(
-        "https://backend-2-xfhu.onrender.com/Admission/admission_create",
+        `${BASE_URL}/Admission/admission_create`,
         payload
       );
       alert(res.data.message || "Admission created successfully");

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const EnquiryForm = () => {
   const [form, setForm] = useState({
     name: "",
@@ -38,7 +38,7 @@ const EnquiryForm = () => {
     setMessage("");
     setError("");
     try {
-      const res = await axios.post("https://backend-2-xfhu.onrender.com/enquiry/Create_enquiry", form);
+      const res = await axios.post(`${BASE_URL}/enquiry/Create_enquiry`, form);
       alert(res.data.message);
       setForm({
         name: "",

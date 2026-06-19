@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const ResetPassword = () => {
   const { token } = useParams(); // token from URL
   const navigate = useNavigate();
@@ -18,7 +18,7 @@ const ResetPassword = () => {
     }
     try {
       const res = await axios.post(
-        `https://backend-2-xfhu.onrender.com/auth/reset-password/${token}`,
+        `${BASE_URL}/auth/reset-password/${token}`,
         { password }
       );
       setMsg(res.data.msg);

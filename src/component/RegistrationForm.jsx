@@ -196,7 +196,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 // import "./RegistrationForm.css";
 import sideImage from "./images/registerside.jpg";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const RegistrationForm = () => {
   const [form, setForm] = useState({
     name: "",
@@ -247,7 +247,7 @@ const RegistrationForm = () => {
 
     try {
       const response = await axios.post(
-        "https://backend-2-xfhu.onrender.com/codeofschool/register",
+        `${BASE_URL}/registration/register`,
         form
       );
       toast.success(response.data.message);

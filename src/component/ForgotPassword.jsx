@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
   const [msg, setMsg] = useState("");
@@ -8,7 +8,7 @@ const ForgotPassword = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://backend-2-xfhu.onrender.com/auth/forgot-password", { email });
+      const res = await axios.post(`${BASE_URL}/auth/forgot-password`, { email });
       setMsg(res.data.msg);
       setEmail(""); // clear field
     } catch (err) {

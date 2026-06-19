@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import API from "../component/API";
 // import "../styles/auth.css";
 import { Link } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const Signup = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [message, setMessage] = useState("");
@@ -15,7 +15,7 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post("https://backend-2-xfhu.onrender.com/auth/signup", form);
+      const res = await API.post(`${BASE_URL}/auth/signup`, form);
       setMessage(res.data.msg);
       setError("");
       setForm({ name: "", email: "", password: "" });

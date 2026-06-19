@@ -38,7 +38,7 @@
 //     const fetchData = async () => {
 //       try {
 //         const res = await axios.get(
-//           `http://localhost:5000/codeofschool/get_user/${id}`
+//           `http://localhost:5000/registration/get_user/${id}`
 //         );
 //         setForm(res.data.data);
 //         setLoading(false);
@@ -60,7 +60,7 @@
 //     e.preventDefault();
 //     try {
 //       await axios.put(
-//         `http://localhost:5000/codeofschool/update_user/${id}`,
+//         `http://localhost:5000/registration/update_user/${id}`,
 //         form
 //       );
 //       alert("Updated Successfully ");
@@ -178,7 +178,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import registerImg from "./images/registerside.jpg"; // apni image ka path daalein
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const RegistrationEdit = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -214,7 +214,7 @@ const RegistrationEdit = () => {
   //   const fetchData = async () => {
   //     try {
   //       const res = await axios.get(
-  //         `http://localhost:5000/codeofschool/get_user/${id}`
+  //         `http://localhost:5000/registration/get_user/${id}`
   //       );
   //       setForm(res.data.data);
   //       setLoading(false);
@@ -231,7 +231,7 @@ const RegistrationEdit = () => {
     try {
       const token = localStorage.getItem("token"); //  get token
       const res = await axios.get(
-        `http://localhost:5000/codeofschool/get_user/${id}`,
+        `${BASE_URL}/registration/get_user/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // attach token
@@ -257,7 +257,7 @@ const RegistrationEdit = () => {
   //   e.preventDefault();
   //   try {
   //     await axios.put(
-  //       `http://localhost:5000/codeofschool/update_user/${id}`,
+  //       `http://localhost:5000/registration/update_user/${id}`,
   //       form
   //     );
   //     alert("Updated Successfully ");
@@ -271,7 +271,7 @@ const RegistrationEdit = () => {
   try {
     const token = localStorage.getItem("token"); // 🔑 get token
     await axios.put(
-      `https://backend-2-xfhu.onrender.com/codeofschool/update_user/${id}`,
+      `${BASE_URL}/registration/update_user/${id}`,
       form,
       {
         headers: {
@@ -282,6 +282,7 @@ const RegistrationEdit = () => {
     alert("Updated Successfully ");
     navigate("/", { state: { updatedMobile: form.mobile } });
   } catch (error) {
+    console.log(error)
     alert("Error while updating or Unauthorized");
   }
 };

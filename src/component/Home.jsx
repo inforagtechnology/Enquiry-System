@@ -23,7 +23,7 @@
 //   const fetchData = async (mobileNumber) => {
 //     try {
 //       const res = await axios.get(
-//         `http://localhost:5000/codeofschool/search/${mobileNumber}`
+//         `http://localhost:5000/registration/search/${mobileNumber}`
 //       );
 //       setData(res.data.data);
 //       setError("");
@@ -65,7 +65,7 @@
 //   // const handleDelete = async (id) => {
 //   //   try {
 //   //     await axios.delete(
-//   //       `http://localhost:5000/codeofschool/delete_user/${id}`
+//   //       `http://localhost:5000/registration/delete_user/${id}`
 //   //     );
 //   //     alert("Deleted Successfully");
 //   //     setData(null);
@@ -78,7 +78,7 @@
 //     if (!ok) return;
 //     try {
 //       await axios.delete(
-//         `http://localhost:5000/codeofschool/delete_user/${id}`
+//         `http://localhost:5000/registration/delete_user/${id}`
 //       );
 //       alert("Deleted Successfully");
 //       setData(null);
@@ -172,7 +172,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom';
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 export const Home = () => {
   const [mobile, setMobile] = useState("");
   const [data, setData] = useState(null);
@@ -193,7 +193,7 @@ export const Home = () => {
   const fetchData = async (mobileNumber) => {
     try {
       const res = await axios.get(
-        `https://backend-2-xfhu.onrender.com/codeofschool/search/${mobileNumber}`,
+        `${BASE_URL}/registration/search/${mobileNumber}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // ✅ attach token
@@ -236,7 +236,7 @@ export const Home = () => {
     if (!ok) return;
     try {
       await axios.delete(
-        `https://backend-2-xfhu.onrender.com/codeofschool/delete_user/${id}`,
+        `${BASE_URL}/registration/delete_user/${id}`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // attach token for delete

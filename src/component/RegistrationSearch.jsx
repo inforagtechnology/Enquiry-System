@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const RegistrationSearch = () => {
   const [mobile, setMobile] = useState("");
   const [data, setData] = useState(null);
@@ -22,7 +22,7 @@ const RegistrationSearch = () => {
   const fetchData = async (mobileNumber) => {
     try {
       const res = await axios.get(
-        `https://backend-2-xfhu.onrender.com/codeofschool/search/${mobileNumber}`
+        `${BASE_URL}/registration/search/${mobileNumber}`
       );
       setData(res.data.data);
       setError("");
@@ -61,7 +61,7 @@ const RegistrationSearch = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `https://backend-2-xfhu.onrender.com/codeofschool/delete_user/${id}`
+        `${BASE_URL}/registration/delete_user/${id}`
       );
       alert("Deleted Successfully");
       setData(null);

@@ -92,7 +92,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
 const AuthForm = () => {
   const [isSignup, setIsSignup] = useState(true);
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -106,8 +106,8 @@ const AuthForm = () => {
     e.preventDefault();
     try {
       const url = isSignup
-        ? "https://backend-2-xfhu.onrender.com/auth/signup"
-        : "https://backend-2-xfhu.onrender.com/auth/login"; 
+        ? `${BASE_URL}/auth/signup`
+        : `${BASE_URL}/auth/login`; 
 
       const payload = isSignup
         ? { name: form.name, email: form.email, password: form.password }

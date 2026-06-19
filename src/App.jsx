@@ -1,6 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
 import RegistrationForm from './component/RegistrationForm'
 import EnquiryForm from './component/EnquiryForm'
@@ -21,7 +20,7 @@ import Login from './component/Login'
 
 function App() {
   // const [count, setCount] = useState(0)
-  const [user, setUser] = useState(null);
+  //const [user, setUser] = useState(null);
 
   // const ProtectedRoute = ({ children }) => {
   //   const token = localStorage.getItem("token");
