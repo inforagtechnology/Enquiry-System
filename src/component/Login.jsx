@@ -81,10 +81,78 @@
 
 
 // src/pages/Login.js
+// import React, { useState } from "react";
+// import { useNavigate, Link } from "react-router-dom";
+// import API from "../component/API";
+// const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+// const Login = () => {
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const navigate = useNavigate();
+
+//   const handleLogin = async (e) => {
+//     e.preventDefault();
+//     try {
+//       const res = await API.post(`${BASE_URL}/auth/login`, { email, password });
+//       localStorage.setItem("token", res.data.token);
+//       localStorage.setItem("role", res.data.role);
+
+//       alert("Login successful!");
+
+//       if (res.data.role === "admin") navigate("/admin");
+//       else if (res.data.role === "HR") navigate("/dashboard");
+//       else navigate("/dashboard");
+//     } catch (err) {
+//       alert("Login failed! Invalid credentials");
+//     }
+//   };
+
+//   return (
+//     <div className="login-container">
+//       <form className="login-box" onSubmit={handleLogin}>
+//         <h2>Welcome Back</h2>
+//         <p className="subtitle">Login to your account</p>
+
+//         <input
+//           type="email"
+//           placeholder="Email address"
+//           value={email}
+//           onChange={(e) => setEmail(e.target.value)}
+//           required
+//         />
+
+//         <input
+//           type="password"
+//           placeholder="Password"
+//           value={password}
+//           onChange={(e) => setPassword(e.target.value)}
+//           required
+//         />
+
+        
+
+//         <button type="submit">Login</button>
+//      <div className="forgot-row">
+//           <Link to="/forgot-password" className="forgot-link">
+//             Forgot Password?
+//           </Link>
+//         </div>
+//         <p className="signup-text">
+//           Don’t have an account?{" "}
+//           <Link to="/signup" className="signup-link">
+//             Sign up
+//           </Link>
+//         </p>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default Login;
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import API from "../component/API";
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5000";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -93,7 +161,9 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await API.post(`${BASE_URL}/auth/login`, { email, password });
+      //  THE FIX: Remove ${BASE_URL} from inside the API.post call!
+      const res = await API.post("/auth/login", { email, password });
+      
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("role", res.data.role);
 
@@ -103,6 +173,7 @@ const Login = () => {
       else if (res.data.role === "HR") navigate("/dashboard");
       else navigate("/dashboard");
     } catch (err) {
+      console.error(err);
       alert("Login failed! Invalid credentials");
     }
   };
@@ -129,10 +200,9 @@ const Login = () => {
           required
         />
 
-        
-
         <button type="submit">Login</button>
-     <div className="forgot-row">
+        
+        <div className="forgot-row">
           <Link to="/forgot-password" className="forgot-link">
             Forgot Password?
           </Link>
